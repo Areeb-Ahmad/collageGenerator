@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mondrian | Digital Atelier</title>
-    
+    <title>Atelier | Home & Creator</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
@@ -20,159 +20,119 @@
         body { 
             background-color: #0a0a0a; 
             color: var(--m-white);
-            font-family: 'Inter', 'Helvetica Neue', sans-serif;
-            letter-spacing: -0.02em;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Hero Navbar */
-        .navbar {
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--m-black);
-            padding: 1.5rem 0;
+        /* --- PRETTY HERO SECTION --- */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+            border-bottom: 12px solid var(--m-black);
+            min-height: 60vh;
         }
 
-        .nav-logo {
+        .hero-text { max-width: 500px; }
+        
+        .hero-title {
+            font-size: 4.5rem;
             font-weight: 900;
-            font-size: 1.8rem;
-            letter-spacing: 8px;
+            letter-spacing: -3px;
             text-transform: uppercase;
-            color: var(--m-white);
+            line-height: 0.9;
+            margin-bottom: 20px;
         }
 
-        /* The Grid Container */
+        /* The Mondrian Art-Button */
+        .btn-mondrian {
+            position: relative;
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: white;
+            text-decoration: none;
+            border: 3px solid white;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-mondrian::before, .btn-mondrian::after {
+            content: "";
+            position: absolute; top: 0; height: 100%; width: 0; z-index: -1;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .btn-mondrian::before { left: 0; background: var(--m-red); }
+        .btn-mondrian::after { right: 0; background: var(--m-blue); }
+
+        .btn-mondrian:hover {
+            color: white;
+            border-color: var(--m-yellow);
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0px var(--m-black);
+        }
+        .btn-mondrian:hover::before, .btn-mondrian:hover::after { width: 50%; }
+
+        /* --- COLLAGE CREATOR SECTION --- */
+        .creator-container { padding: 80px 0; }
+
         #collage-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            grid-auto-rows: 180px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-auto-rows: 160px;
             grid-auto-flow: dense;
             gap: 12px;
             background: var(--m-black);
             padding: 12px;
             border: var(--m-border) solid var(--m-black);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            min-height: 70vh;
-            border-radius: 4px;
         }
 
-        /* Beautiful Tile Design */
         .grid-item-wrapper {
             position: relative;
             background: var(--m-white);
-            padding: 8px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: grab;
             overflow: hidden;
-            display: flex;
-            align-items: center; 
-            justify-content: center;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .grid-item-wrapper:hover {
-            transform: scale(1.02);
-            z-index: 10;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
+        .grid-item { width: 100%; height: 100%; object-fit: cover; }
+        .grid-text { color: black; font-weight: 900; text-transform: uppercase; padding: 10px; }
 
-        .grid-item { 
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .grid-text { 
-            color: var(--m-black); 
-            font-weight: 800; 
-            text-transform: uppercase;
-            padding: 1rem;
-            margin: 0;
-        }
-
-        /* Mondrian Blocks */
         .block-red { background: var(--m-red) !important; }
-        .block-red .grid-text { color: white; }
         .block-blue { background: var(--m-blue) !important; }
-        .block-blue .grid-text { color: white; }
         .block-yellow { background: var(--m-yellow) !important; }
-        .block-white { background: var(--m-white) !important; }
 
         .span-wide { grid-column: span 2; }
         .span-tall { grid-row: span 2; }
-        .span-large { grid-column: span 2; grid-row: span 2; }
-
-        /* Elegant UI Elements */
-        .btn-atelier {
-            border-radius: 0;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 0.6rem 1.5rem;
-            transition: 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .btn-outline-white { border-color: #333; color: white; }
-        .btn-outline-white:hover { background: white; color: black; border-color: white; }
-
-        /* The "Beautiful" Modal */
-        .modal-content {
-            background: var(--m-white);
-            border: 15px solid var(--m-black);
-            border-radius: 0;
-            color: black;
-        }
-
-        .modal-header { border: none; padding-bottom: 0; }
-        .modal-body { padding: 2rem; }
-
-        /* Custom Progress Bar */
-        .nitro-progress-container {
-            height: 8px;
-            background: #eee;
-            margin-top: 20px;
-            display: none;
-            position: relative;
-        }
-        .nitro-bar {
-            height: 100%;
-            background: var(--m-red);
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        .btn-remove {
-            position: absolute; top: 10px; right: 10px;
-            background: black; color: white; border: none;
-            width: 24px; height: 24px; border-radius: 50%;
-            display: none; font-size: 12px; z-index: 100;
-        }
-        .grid-item-wrapper:hover .btn-remove { display: flex; align-items: center; justify-content: center; }
-
+        
+        .btn-atelier { border-radius: 0; font-weight: 700; text-transform: uppercase; border: 2px solid white; }
     </style>
 </head>
 <body>
 
-<nav class="navbar sticky-top mb-5">
-    <div class="container">
-        <span class="nav-logo">Atelier</span>
-        <div class="d-flex gap-3">
-            <button class="btn btn-atelier btn-outline-white d-none d-md-block" onclick="shuffleGrid()">
-                <i class="bi bi-shuffle me-2"></i>Shuffle
-            </button>
-            <button class="btn btn-atelier btn-outline-white" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                <i class="bi bi-plus-lg me-2"></i>Import
-            </button>
-            <button class="btn btn-atelier btn-dark text-white" onclick="exportImage()" style="background: var(--m-black);">
-                Export PNG
-            </button>
+<header class="hero-split">
+    <div class="hero-text">
+        <h1 class="hero-title">ATELIER<span style="color:var(--m-red)">.</span></h1>
+        <p class="text-secondary mb-4">Create, organize, and export geometric compositions in the style of De Stijl.</p>
+        <a href="mondrian.html" class="btn-mondrian">Launch Full App</a>
+    </div>
+    <div class="d-none d-lg-block">
+        <div style="width: 300px; height: 300px; border: 10px solid white; position: relative;">
+            <div style="position: absolute; top: -20px; left: -20px; width: 100px; height: 100px; background: var(--m-red);"></div>
+            <div style="position: absolute; bottom: 40px; right: -30px; width: 150px; height: 60px; background: var(--m-blue);"></div>
         </div>
     </div>
-</nav>
+</header>
 
-<div class="container mb-5">
+<div class="container creator-container">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
+            <h3 class="mb-4 text-uppercase fw-bold">Quick Creator</h3>
             <div class="input-group mb-5 shadow-sm">
                 <input type="text" class="form-control form-control-lg border-0 bg-dark text-white p-4" id="smart-input" placeholder="Paste a link or write something...">
                 <button class="btn btn-primary px-5 fw-bold border-0" style="background: var(--m-blue);" onclick="handleSingleInput()">ADD</button>
@@ -180,206 +140,83 @@
 
             <div id="collage-grid"></div>
             
-            <div class="mt-4 d-flex justify-content-between text-secondary small">
-                <span>Drag tiles to reorder. Click to resize.</span>
-                <a href="#" class="text-danger text-decoration-none fw-bold" onclick="clearGrid()">Clear Canvas</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="uploadModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="display-6 fw-black m-0" style="letter-spacing: -2px;">NITRO LOAD</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center">
-                <p class="text-muted mb-4">Select a .txt file. We'll handle the stability and the speed.</p>
-                <input type="file" id="file-input" accept=".txt" class="form-control form-control-lg border-2 border-dark mb-4 rounded-0">
-                
-                <button class="btn btn-dark btn-lg w-100 rounded-0 fw-bold py-3" id="start-btn" onclick="processFile()">
-                    GENERATE COMPOSITION
-                </button>
-
-                <div class="nitro-progress-container" id="progress-container">
-                    <div class="nitro-bar" id="nitro-bar"></div>
-                    <div class="small mt-2 fw-bold text-uppercase" id="status-text">Processing...</div>
+            <div class="mt-4 d-flex justify-content-between align-items-center">
+                <button class="btn btn-atelier btn-outline-light" onclick="shuffleGrid()">Shuffle</button>
+                <div>
+                    <a href="#" class="text-danger text-decoration-none me-4 fw-bold" onclick="clearGrid()">Clear</a>
+                    <button class="btn btn-atelier btn-danger" onclick="exportImage()">Export PNG</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     const grid = document.getElementById('collage-grid');
-    const colors = ['block-red', 'block-blue', 'block-yellow', 'block-white'];
-    const spanCycle = ['', 'span-wide', 'span-tall', 'span-large'];
+    const colors = ['block-red', 'block-blue', 'block-yellow'];
 
-    async function nitroFetch(url) {
-        try {
-            const res = await fetch(url, { mode: 'cors' });
-            if (!res.ok) return url;
-            const blob = await res.blob();
-            return URL.createObjectURL(blob);
-        } catch (e) { return url; }
-    }
-
-    // Stable Concurrency: Batches of 5
-    async function processFile() {
-        const file = document.getElementById('file-input').files[0];
-        if (!file) return;
-
-        const btn = document.getElementById('start-btn');
-        const progress = document.getElementById('progress-container');
-        const bar = document.getElementById('nitro-bar');
-        const status = document.getElementById('status-text');
-
-        btn.style.display = 'none';
-        progress.style.display = 'block';
-
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-            const lines = e.target.result.split(/\n/).map(l => l.trim()).filter(l => l);
-            const fragment = document.createDocumentFragment();
-            const tasks = [];
-
-            lines.forEach((line, index) => {
-                const isUrl = line.startsWith('http');
-                const tile = createTileElement(isUrl ? 'loading' : null, '', isUrl ? null : colors[Math.floor(Math.random() * colors.length)], isUrl ? null : line);
-                fragment.appendChild(tile);
-                if (isUrl) {
-                    tasks.push(async () => {
-                        const blobUrl = await nitroFetch(line);
-                        const img = tile.querySelector('img');
-                        if (img) {
-                            img.src = blobUrl;
-                            tile.classList.remove('is-loading');
-                        }
-                    });
-                }
-            });
-
-            grid.appendChild(fragment);
-            
-            // Execute batches
-            let completed = 0;
-            const batchSize = 5;
-            for (let i = 0; i < tasks.length; i += batchSize) {
-                const batch = tasks.slice(i, i + batchSize);
-                await Promise.all(batch.map(t => t()));
-                completed += batch.length;
-                const percent = Math.round((completed / tasks.length) * 100);
-                bar.style.width = percent + '%';
-                status.innerText = `Fetching: ${percent}%`;
-            }
-
-            save();
-            setTimeout(() => {
-                bootstrap.Modal.getInstance(document.getElementById('uploadModal')).hide();
-                btn.style.display = 'block';
-                progress.style.display = 'none';
-                bar.style.width = '0%';
-            }, 800);
-        };
-        reader.readAsText(file);
-    }
-
-    function createTileElement(url, span, color, text) {
+    // Reuse your existing logic for handling inputs and creating tiles
+    function createTile(content, isUrl) {
         const wrapper = document.createElement('div');
-        wrapper.className = `grid-item-wrapper ${span} ${color || ''}`;
-        
-        if (url) {
-            if (url === 'loading') wrapper.classList.add('is-loading');
+        const colorClass = isUrl ? '' : colors[Math.floor(Math.random() * colors.length)];
+        wrapper.className = `grid-item-wrapper ${colorClass}`;
+
+        if (isUrl) {
             const img = document.createElement('img');
             img.className = 'grid-item';
-            if (url !== 'loading') img.src = url;
-            img.onload = () => {
-                img.style.opacity = "1";
-                const ratio = img.width / img.height;
-                if (ratio > 1.2) wrapper.classList.add('span-wide');
-                else if (ratio < 0.8) wrapper.classList.add('span-tall');
-            };
+            img.src = content; 
             wrapper.appendChild(img);
-        } else {
+        } else if (content) {
             const p = document.createElement('p');
             p.className = 'grid-text';
-            p.innerText = text;
-            p.style.fontSize = text.length > 20 ? '0.75rem' : '1.1rem';
+            p.innerText = content;
             wrapper.appendChild(p);
         }
 
         wrapper.onclick = () => {
-            let current = spanCycle.find(s => s && wrapper.classList.contains(s)) || '';
-            let next = (spanCycle.indexOf(current) + 1) % spanCycle.length;
-            spanCycle.forEach(s => s && wrapper.classList.remove(s));
-            if (spanCycle[next]) wrapper.classList.add(spanCycle[next]);
+            wrapper.classList.toggle('span-wide');
             save();
         };
-
-        const rm = document.createElement('button');
-        rm.className = 'btn-remove'; rm.innerHTML = '<i class="bi bi-x"></i>';
-        rm.onclick = (e) => { e.stopPropagation(); wrapper.remove(); save(); };
-        wrapper.appendChild(rm);
 
         return wrapper;
     }
 
-    async function handleSingleInput() {
+    function handleSingleInput() {
         const input = document.getElementById('smart-input');
         const val = input.value.trim();
         if (!val) return;
-        const isUrl = val.startsWith('http');
-        const tile = createTileElement(isUrl ? 'loading' : null, '', isUrl ? null : colors[Math.floor(Math.random() * colors.length)], isUrl ? null : val);
-        grid.appendChild(tile);
-        if (isUrl) {
-            const blob = await nitroFetch(val);
-            const img = tile.querySelector('img');
-            if (img) { img.src = blob; tile.classList.remove('is-loading'); }
-        }
+        grid.appendChild(createTile(val, val.startsWith('http')));
         input.value = '';
         save();
     }
 
     function shuffleGrid() {
-        const children = Array.from(grid.children);
-        for (let i = children.length - 1; i > 0; i--) {
+        const items = Array.from(grid.children);
+        for (let i = items.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            grid.appendChild(children[j]);
+            grid.appendChild(items[j]);
         }
         save();
     }
 
     function save() {
-        const data = Array.from(grid.querySelectorAll('.grid-item-wrapper')).map(w => ({
-            url: w.querySelector('img')?.src || null,
-            text: w.querySelector('.grid-text')?.innerText || null,
-            span: Array.from(w.classList).find(c => c.startsWith('span-')) || '',
-            color: Array.from(w.classList).find(c => c.startsWith('block-')) || ''
-        }));
-        localStorage.setItem('mondrian_gallery_v1', JSON.stringify(data));
+        localStorage.setItem('quick_collage', grid.innerHTML);
     }
 
-    function clearGrid() { if(confirm("Clear Atelier?")) { grid.innerHTML = ''; localStorage.removeItem('mondrian_gallery_v1'); }}
+    function clearGrid() { if(confirm("Clear?")) { grid.innerHTML = ''; save(); }}
 
     function exportImage() {
-        const originalBg = grid.style.background;
-        grid.style.background = '#000';
-        html2canvas(grid, { useCORS: true, backgroundColor: '#000' }).then(canvas => {
+        html2canvas(grid).then(canvas => {
             const a = document.createElement('a');
-            a.download = 'atelier-composition.png';
+            a.download = 'collage.png';
             a.href = canvas.toDataURL();
             a.click();
-            grid.style.background = originalBg;
         });
     }
 
-    const saved = JSON.parse(localStorage.getItem('mondrian_gallery_v1') || '[]');
-    saved.forEach(s => grid.appendChild(createTileElement(s.url, s.span, s.color, s.text)));
-    new Sortable(grid, { animation: 300, onEnd: save });
+    // Load saved
+    grid.innerHTML = localStorage.getItem('quick_collage') || '';
+    new Sortable(grid, { animation: 150, onEnd: save });
 </script>
 
 </body>
