@@ -1,6 +1,6 @@
 # 🎨 Mondrian Digital Atelier
 
-A high-performance, interactive art engine inspired by the **De Stijl** movement and the works of **Piet Mondrian**. This project transforms images, text, and raw data into structured, geometric compositions.
+A high-performance, interactive art engine inspired by the **De Stijl** movement and the works of **Piet Mondrian**. This project transforms images, text, and raw data into structured, geometric compositions. The code in this repository was initially written in conjunction with another similar project. It has been restructured, optimised, and rewritten using Gemini AI Pro.  
 
 ---
 
@@ -12,8 +12,8 @@ A high-performance, interactive art engine inspired by the **De Stijl** movement
 * **Responsive Layout:** Built with Bootstrap 5 to ensure the gallery looks like a professional exhibition on any device.
 
 ### 2. The Advanced Atelier (`mondrian.html`)
-* **Nitro Load System:** A specialized fetching engine that processes batch URL imports in small "bursts" (concurrency of 5) to keep the browser responsive.
-* **Smart Aspect Ratio Detection:** Automatically analyzes imported images to assign `span-wide` or `span-tall` classes, maintaining the visual balance of the grid.
+* **Nitro Load System:** A specialised fetching engine that processes batch URL imports in small "bursts" (concurrency of 5) to keep the browser responsive.
+* **Smart Aspect Ratio Detection:** Automatically analyses imported images to assign `span-wide` or `span-tall` classes, maintaining the visual balance of the grid.
 * **CORS Proxy Integration:** Bypasses browser security restrictions to allow the loading and exporting of images from external domains.
 * **Interactive Grid:** Full drag-and-drop reordering powered by `SortableJS` and one-click tile resizing.
 
