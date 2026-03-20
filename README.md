@@ -1,6 +1,11 @@
 # 🎨 Mondrian Digital Atelier
 
-A high-performance, interactive art engine inspired by the **De Stijl** movement and the works of **Piet Mondrian**. This project transforms images, text, and raw data into structured, geometric compositions. The code in this repository was initially written in conjunction with another similar project. It has been restructured, optimised, and rewritten using Gemini AI Pro.  
+A high-performance, interactive art engine inspired by the **De Stijl** movement and the works of **Piet Mondrian**. This project transforms images, text, and raw data into structured, geometric compositions. 
+
+
+# Disclosure
+
+The code in this repository was initially written in conjunction with another project. It has been restructured, optimised, and rewritten using Gemini AI Pro.  
 
 ---
 
